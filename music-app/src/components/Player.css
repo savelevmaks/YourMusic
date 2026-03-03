@@ -1,0 +1,191 @@
+.global-player-container {
+position: fixed;
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    width: calc(100% - 80px); 
+    
+    max-width: 1200px; 
+    
+    height: 80px;
+    
+    background: rgba(18, 18, 18, 0.603); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    
+    /* border: 1px solid rgba(255, 255, 255, 0.08); */
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
+    z-index: 1000;
+    
+    display: flex;
+    flex-direction: column; 
+    overflow: hidden; 
+}
+
+
+.player-progress-area {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    position: relative;
+    padding: 6px 16px; 
+    top: 0;
+}
+
+.progress-bg {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+}
+
+.player-progress-area:hover .progress-bg {
+    height: 4px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--accent); 
+    border-radius: 10px;
+    /*box-shadow: 0 0 10px var(--accent);*/
+}
+
+.progress-handle {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0; 
+    transition: opacity 0.2s;
+}
+
+.player-progress-area:hover .progress-handle {
+    opacity: 1; 
+}
+
+.player-content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.player-section {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.player-section.left { justify-content: flex-start; gap: 16px; }
+
+.player-cover {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #333, #555);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.player-track-info { display: flex; flex-direction: column; gap: 2px; }
+.player-title { font-weight: 700; font-size: 14px; color: white; }
+.player-artist { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+.player-section.center { justify-content: center; gap: 20px; }
+
+.player-control-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.player-control-btn.secondary { color: rgba(255,255,255,0.6); }
+.player-control-btn.secondary:hover { color: white; transform: scale(1.1); }
+
+.player-control-btn.primary {
+    width: 40px;
+    height: 40px;
+    background-color: white; 
+    border-radius: 50%;
+    color: black;
+    box-shadow: 0 0 7px rgba(255, 255, 255, 0.11);
+}
+.player-control-btn.primary:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
+
+.player-section.right { justify-content: flex-end; gap: 15px; }
+
+.player-action-btn {
+    color: rgba(255,255,255,0.5);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.player-action-btn:hover { color: white; 
+    transform: scale(1.1);
+}
+
+.player-action-btn.liked {
+    color: #FF2E4C;
+    animation: heartBeat 0.3s ease;
+}
+
+.player-action-btn.active {
+    color: var(--accent); 
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(215, 252, 3, 0.4);
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.player-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(255,255,255,0.1);
+    margin: 0 5px;
+}
+
+.volume-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100px;
+}
+
+.volume-slider {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.volume-fill {
+    height: 100%;
+    background: white;
+    border-radius: 4px;
+}
+.volume-wrapper:hover .volume-fill {
+    background: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .volume-wrapper, .player-divider { display: none; }
+    .global-player-container { bottom: 10px; width: 95%; }
+    .player-title { font-size: 13px; }
+}

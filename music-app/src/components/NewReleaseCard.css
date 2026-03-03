@@ -1,0 +1,177 @@
+/* --- КАРТОЧКА (Анимация слайдера) --- */
+.release-card {
+    width: 100%; 
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: scale(0.85);
+    opacity: 0.5;
+    filter: grayscale(60%);
+}
+
+.release-card.active {
+    transform: scale(1.1);
+    opacity: 1;
+    filter: grayscale(0%);
+    z-index: 10;
+}
+
+.release-card:hover {
+    opacity: 1;
+}
+
+/* --- КОНТЕЙНЕР (Слой 1: Картинка) --- */
+.cover-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4; /* Вытянутая форма */
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    
+    /* Flexbox чтобы прижать info-layer к самому низу */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+}
+
+/* --- СЛОЙ 2: Градиент --- */
+.card-gradient {
+    position: absolute;
+    inset: 0; /* Растягиваем на всю карточку */
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 40%, transparent 100%);
+    z-index: 1;
+    pointer-events: none; /* Чтобы не блокировал клики */
+}
+
+/* --- СЛОЙ 3: Оверлей (Появляется при ховере) --- */
+.hover-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Затемнение картинки */
+    z-index: 2; /* Поверх градиента, но ПОД текстом */
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Play по центру */
+}
+
+/* Активация оверлея при наведении на карточку */
+.cover-container:hover .hover-overlay {
+    opacity: 1;
+}
+
+/* Кнопка Play */
+.action-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: 0.2s;
+    color: white;
+}
+
+.action-btn:hover {
+    transform: scale(1.1);
+}
+
+.action-btn.play-btn {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+.action-btn.play-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Доп кнопки (Лайк/Плюс) - висят над текстом */
+.action-buttons {
+    position: absolute;
+    bottom: 85px; 
+    display: flex;
+    gap: 20px;
+}
+
+.minimal-icon-btn {
+    background: none;
+    border: none;
+    padding: 5px; /* Невидимая зона для удобного клика */
+    cursor: pointer;
+    
+    /* Изначально они светло-серые и слегка прозрачные */
+    color: rgba(255, 255, 255, 0.7); 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+/* При наведении: становятся чисто белыми и увеличиваются */
+.minimal-icon-btn:hover {
+    color: #FFFFFF;
+    transform: scale(1.1); /* Чуть сильнее увеличиваем для красоты */
+}
+
+/* Если потом захочешь сделать лайк красным при нажатии: */
+.minimal-icon-btn.active {
+    color: #FF2E4C;
+}
+
+/* --- СЛОЙ 4: Инфо (Текст и Аватар) --- */
+.info-layer {
+    position: relative;
+    z-index: 3; /* САМЫЙ ВЫСОКИЙ СЛОЙ */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    width: 100%;
+}
+
+.artist-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgba(255,255,255,0.8);
+    flex-shrink: 0;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.track-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-artist {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 2px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+/* Задел на будущее (ссылка на артиста) */
+.track-artist:hover {
+    color: white;
+    text-decoration: underline;
+}

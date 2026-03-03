@@ -1,0 +1,79 @@
+.releases-section {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Кнопки навигации */
+.slider-controls {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-arrow {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.nav-arrow:hover {
+    background: var(--accent);
+    color: black;
+    border-color: var(--accent);
+}
+
+/* --- СТИЛИ EMBLA CAROUSEL --- */
+
+/* Окно просмотра */
+.embla {
+    overflow: hidden; 
+    /* Растягиваем на всю ширину экрана, чтобы центр был абсолютным */
+    width: 100vw; 
+    position: relative;
+    /* Сдвигаем влево, чтобы компенсировать padding основного <main> */
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    padding: 50px 0; /* Место для увеличения карточки */
+}
+
+.embla__container {
+    display: flex;
+    /* Важно для Embla - не использовать gap! Отступы делаются внутри слайда */
+    touch-action: pan-y pinch-zoom; /* Для тачскринов */
+}
+
+.embla__slide {
+    /* 
+       Ширина слайда. Меняй это значение, если хочешь сделать карточки шире/уже.
+       Пример: 300px ширина + по 15px отступ с каждой стороны 
+    */
+    flex: 0 0 300px; 
+    min-width: 0;
+    padding: 0 20px; /* Отступы МЕЖДУ карточками */
+    
+    /* Чтобы карточка внутри центрировалась */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

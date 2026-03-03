@@ -1,0 +1,373 @@
+.main-play-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 32px;
+  overflow: hidden;
+  margin-top: 40px;
+  background-color: #0a0a0a;
+  border: 0px solid #333;
+  transition: all 0.5s ease;
+  isolation: isolate; 
+}
+
+.main-play-container.playing {
+  border-color: var(--accent);
+  /*box-shadow: 0 0 20px rgba(255, 255, 255, 0.042); */
+}
+
+.lava-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.6; 
+  filter: blur(80px) grayscale(30%); 
+  transition: all 1.5s ease; 
+  will-change: filter, opacity; 
+}
+
+.main-play-container.playing .lava-background {
+  opacity: 1; 
+  filter: blur(80px) saturate(400%) brightness(200%);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  animation: float 10s infinite ease-in-out alternate;
+  mix-blend-mode: screen; 
+}
+
+.blob-1 {
+  width: 350px;
+  height: 350px;
+  background: var(--accent);
+  top: -10%;
+  left: -10%;
+  opacity: 0.6; 
+}
+
+.blob-2 {
+  width: 450px;
+  height: 450px;
+  background: #6B4EFF;
+  bottom: -10%;
+  right: -10%;
+  animation-duration: 14s;
+  opacity: 0.5;
+}
+
+.blob-3 {
+  width: 300px;
+  height: 300px;
+  background: #00FFA3;
+  top: 30%;
+  left: 40%;
+  animation-duration: 8s;
+  opacity: 0.4;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 20px) scale(1.2); }
+  100% { transform: translate(-20px, -20px) scale(0.8); }
+}
+
+.glass-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; 
+  
+  background: rgba(18, 18, 18, 0.489); 
+  backdrop-filter: blur(20px); 
+  pointer-events: none;
+}
+
+.content-layer {
+  position: relative;
+  z-index: 10; 
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mix-info {
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.mix-info .tag {
+  letter-spacing: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.mix-info h2 {
+  font-size: 64px;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.controls-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  z-index: 11; 
+  justify-content: center;
+  width: 100%;
+}
+
+
+.center-group {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;   
+    justify-content: center;
+    width: 100%; 
+    z-index: 15;  
+}
+
+.nav-btn {
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
+.play-btn-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+.play-btn-large:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255, 255, 255, 0.201); }
+.play-btn-large:active { transform: scale(0.95); }
+
+.description {
+    color: rgba(255, 255, 255, 0.8); 
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: 500;
+}
+.bottom-switcher {
+    position: absolute;
+    bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.5); 
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+.switcher-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255, 255, 255, 0.4); font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+.switcher-item.active { color: white; }
+.divider { width: 1px; height: 12px; background-color: rgba(255, 255, 255, 0.2); }
+
+.side-block {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Центруем по вертикали */
+    display: flex;
+    z-index: 20;
+    /* На маленьких экранах скроем их, чтобы не мешали (адаптив) */
+}
+
+/* ЛЕВАЯ ПАНЕЛЬ */
+.side-block.left {
+    left: 80px; /* Отступ от левого края */
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+}
+
+/* ПРАВАЯ ПАНЕЛЬ */
+.side-block.right {
+    right: 80px; /* Отступ от правого края */
+    flex-direction: column; /* Кнопки в столбик */
+    gap: 20px;
+}
+
+/* Стили для обложки */
+.track-cover-placeholder {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(45deg, #333, #555);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Текст трека */
+.track-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.track-title {
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+}
+
+.track-artist {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+}
+
+/* Кнопки справа */
+.icon-action {
+    color: rgba(255,255,255,0.4);
+    transition: 0.2s;
+}
+
+.icon-action:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+/* --- АДАПТИВНОСТЬ (ВАЖНО) --- */
+
+@media (max-width: 1300px) {
+  /* ЛЕВАЯ ПАНЕЛЬ */
+.side-block.left {
+    left: 60px; /* Отступ от левого края */
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+}
+
+/* ПРАВАЯ ПАНЕЛЬ */
+.side-block.right {
+    right: 60px; /* Отступ от правого края */
+    flex-direction: column; /* Кнопки в столбик */
+    gap: 20px;
+}
+
+/* Стили для обложки */
+.track-cover-placeholder {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #333, #555);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Текст трека */
+.track-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.track-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+}
+
+.track-artist {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+}
+}
+/* Если экран меньше 1000px, скрываем бока, чтобы не налезли на кнопку Play */
+
+@media (max-width: 1000px) {
+    .side-block {
+        display: none;
+    }
+}
+
+/* Лайк (Красный) */
+.icon-action.liked {
+    color: #FF2E4C; /* Красный цвет контура */
+    transform: scale(1.1); /* Чуть больше */
+    text-shadow: 0 0 10px rgba(255, 46, 76, 0.4); /* Свечение */
+    animation: heartBeat 0.3s ease;
+}
+
+/* Активные кнопки (Желтый/Лайм) - для Shuffle, Repeat, Menu */
+.icon-action.active {
+    color: var(--accent); 
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(215, 252, 3, 0.4);
+}
+
+/* --- ВЫПАДАЮЩЕЕ МЕНЮ --- */
+.context-menu {
+    position: absolute;
+    bottom: 0;        /* Привязываем к низу кнопки */
+    right: 45px;      /* Сдвигаем влево от кнопок (чтобы не перекрывало) */
+    width: 180px;
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 100;
+    
+    /* Анимация появления */
+    animation: menuFadeIn 0.2s ease-out;
+    transform-origin: bottom right;
+}
+
+@keyframes menuFadeIn {
+    from { opacity: 0; transform: scale(0.9) translateX(10px); }
+    to { opacity: 1; transform: scale(1) translateX(0); }
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.menu-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 4px 8px;
+}
+
