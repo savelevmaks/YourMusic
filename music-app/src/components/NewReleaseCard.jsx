@@ -7,13 +7,9 @@ const NewReleaseCard = ({ title, artist, coverImage, artistImage, isActive, onCl
         <div className={`release-card ${isActive ? 'active' : ''}`} onClick={onClick}>
             <div className="cover-container" style={{ backgroundImage: `url(${coverImage})` }}>
                 
-                {/* СЛОЙ 2: Градиент (всегда виден) */}
                 <div className="card-gradient"></div>
-
-                {/* СЛОЙ 3: Оверлей с кнопками (появляется при наведении) */}
                 <div className="hover-overlay">
                     
-                    {/* Кнопка Play строго по центру */}
                     <button className="action-btn play-btn">
                         <Play size={24} fill="black" stroke="black" />
                     </button>
@@ -28,7 +24,6 @@ const NewReleaseCard = ({ title, artist, coverImage, artistImage, isActive, onCl
                     </div>
                 </div>
 
-                {/* СЛОЙ 4: Инфо (всегда поверх всего, в самом низу) */}
                 <div className="info-layer">
                     <div className="artist-avatar" style={{ backgroundImage: `url(${artistImage})` }}></div>
                     <div className="text-content">

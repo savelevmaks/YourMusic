@@ -14,6 +14,11 @@
     margin-right: auto;
 }
 
+.section-header-h {
+    font-size: 30px;
+    font-weight: 700;
+}
+
 /* Кнопки навигации */
 .slider-controls {
     display: flex;

@@ -46,7 +46,7 @@ const NewReleases = ({ releases }) => {
     return (
         <section className="releases-section">
             <div className="section-header">
-                <h2>Новые релизы</h2>
+                <h2 className="section-header-h">Новые релизы</h2>
                 
                 <div className="slider-controls">
                     <button onClick={scrollPrev} className="nav-arrow">
