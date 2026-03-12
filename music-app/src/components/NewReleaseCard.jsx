@@ -8,6 +8,7 @@ const NewReleaseCard = ({ title, artist, coverImage, artistImage, isActive, onCl
             <div className="cover-container" style={{ backgroundImage: `url(${coverImage})` }}>
                 
                 <div className="card-gradient"></div>
+                
                 <div className="hover-overlay">
                     
                     <button className="action-btn play-btn">

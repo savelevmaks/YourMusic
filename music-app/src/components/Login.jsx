@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
+import { Link } from "react-router-dom";
+import Register from "./Register";
+import { Eye, EyeOff } from "lucide-react";
 
 const Login = ( {handleLogin} ) => {
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -16,14 +21,20 @@ const Login = ( {handleLogin} ) => {
                 <input type="email" placeholder='Ваша почта' required/>
                 <label>Пароль:</label>
                 <div className='password-container'>
-                    <input type="password" placeholder='Ваш пароль' required/>
+                    <div className="password-input-wrapper">
+                        <input type={showPassword ? "text" : "password"} placeholder='Ваш пароль' required/>
+                        <button type="button" className="toggle-visibility" onClick={() => setShowPassword(!showPassword)}>
+                            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                        </button>
+                    </div>
+                    
                     <div className="checkbox-wrapper">
                         <input type="checkbox" id='save-password' />
                         <label htmlFor='save-password' style={{ cursor: 'pointer' }}>Запомнить пароль</label>
                     </div>
                 </div>
                 <div className='bottom-container'>
-                    <a href="#">Зарегистрироваться</a>
+                    <Link to="/Register">Зарегистрироваться</Link>
                     <a href="#">Забыли пароль?</a>
                 </div>
 

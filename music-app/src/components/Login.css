@@ -1,11 +1,12 @@
 .login-container {
     width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
-    margin-top: 100px;
+    overflow: hidden;
 }
 
 h1 {
@@ -31,7 +32,8 @@ label {
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="text"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -67,25 +69,31 @@ input:focus {
 }
 
 .bottom-container a {
-    color: var(--accent);
+    color: var(--text-muted);
     text-decoration: none;
     font-size: 13px;
+    transition: 0.1s;
+}
+
+.bottom-container a:hover {
+    color: var(--accent);
 }
 
 .login-button {
     width: 100%;
     padding: 12px;
+    font-size: 16px;
     border-radius: 8px;
     border: none;
     background-color: var(--accent);
-    color: black;
+    color: rgb(0, 0, 0);
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
 }
 
 .login-button:hover {
-    background-color: rgb(114, 129, 45);
+    background-color: rgb(149, 175, 33);
 }
 
 .checkbox-wrapper {
@@ -106,4 +114,46 @@ input:focus {
 
 .checkbox-wrapper label {
     margin: 0; 
+}
+
+/* Мини-обертка четко по размеру инпута */
+.password-input-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px; /* Отступ до чекбокса */
+}
+
+.password-input-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* Чтобы текст пароля не залезал под иконку */
+    margin-bottom: 0; /* Убираем нижний отступ, он теперь у обертки */
+}
+
+.toggle-visibility {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%); /* Идеальное центрирование */
+    /* ... остальные стили кнопки ... */
+     background: none;
+    border: none;
+    padding: 0;
+    
+    /* ЦВЕТА И АНИМАЦИЯ */
+    color: var(--text-muted); /* Исходный тусклый серый цвет */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.toggle-visibility:hover {
+    color: var(--accent); 
+    transform: translateY(-50%) scale(1.1); /* Сохраняем центрирование (translateY) и добавляем масштаб (scale) */
+}
+
+/* При клике: легкое сжатие для ощущения нажатия */
+.toggle-visibility:active {
+    transform: translateY(-50%) scale(0.95);
 }
