@@ -14,6 +14,11 @@ const Register = ({ setIsAuthenticated }) => {
     const [error, setError] = useState('');
     const handleRegister = (e) => {
         e.preventDefault();
+             
+        if (password.length <= 8) {
+            setError('Пароль слишком короткий');
+            return;
+        }
 
         if (password != confirmPassword) {
             setError('Пароли не совпадают');

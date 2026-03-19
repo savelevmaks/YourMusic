@@ -87,13 +87,13 @@ input:focus {
     border: none;
     background-color: var(--accent);
     color: rgb(0, 0, 0);
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
     transition: 0.2s;
 }
 
 .login-button:hover {
-    background-color: rgb(149, 175, 33);
+    background-color: rgb(129, 146, 31);
 }
 
 .checkbox-wrapper {
