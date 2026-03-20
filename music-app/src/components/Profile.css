@@ -1,0 +1,272 @@
+.profile-page {
+    padding: 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white;
+}
+
+.profile-header {
+    margin-bottom: 30px;
+}
+
+.back-btn {
+    color: rgba(255, 255, 255, 0.6);
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    color: var(--accent);
+}
+
+.profile-container {
+    display: grid;
+    grid-template-columns: 400px 1fr; 
+    gap: 60px;
+}
+
+/* --- ЛЕВАЯ ЧАСТЬ --- */
+.left-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+}
+
+.avatar-wrapper {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+
+.avatar-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(3px);
+}
+
+.avatar-wrapper:hover .avatar-overlay {
+    opacity: 1;
+}
+
+.avatar-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.avatar-btn:hover {
+    background: var(--accent);
+    color: black;
+    transform: scale(1.1);
+}
+
+.nickname {
+    margin: 0 0 15px 0;
+    font-size: 28px;
+}
+
+.genres-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.genre-tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+}
+
+.about-me {
+    background: rgba(30, 30, 30, 0.5);
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: left;
+    width: 100%;
+}
+
+.about-me h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+}
+
+.about-me p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- ПРАВАЯ ЧАСТЬ --- */
+.right-profile h2 {
+    font-size: 32px;
+    margin: 0 0 5px 0;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 30px 0;
+}
+
+.upload-zone {
+    width: 100%;
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    background: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-label:hover {
+    border-color: var(--accent);
+    background: rgba(215, 252, 3, 0.05); 
+}
+
+.upload-icon-circle {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.upload-label:hover .upload-icon-circle {
+    transform: scale(1.1);
+    background: rgba(215, 252, 3, 0.1);
+}
+
+.upload-label h3 {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+}
+
+.upload-label span {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.icon-action-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.icon-action-btn:hover {
+    transform: scale(1.1);
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.icon-action-btn.edit:hover { color: var(--accent); border-color: var(--accent); }
+.icon-action-btn.logout:hover { color: #FF2E4C; border-color: #FF2E4C; }
+.icon-action-btn.success { color: var(--accent); background: rgba(215, 252, 3, 0.1); border-color: var(--accent); }
+.icon-action-btn.danger { color: #FF2E4C; background: rgba(255, 46, 76, 0.1); border-color: #FF2E4C; }
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+}
+
+.edit-input, .edit-textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: white;
+    font-family: inherit;
+    transition: 0.2s;
+    text-align: center; 
+}
+
+.edit-input:focus, .edit-textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.title-input {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.genre-input {
+    color: var(--accent);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.edit-textarea {
+    text-align: left; 
+    resize: vertical; 
+    line-height: 1.5;
+}
+
+.avatar-wrapper.editing {
+    border: 2px dashed var(--accent);
+}
