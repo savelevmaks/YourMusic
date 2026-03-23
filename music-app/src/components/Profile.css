@@ -9,12 +9,12 @@
     margin-bottom: 30px;
 }
 
-.back-btn {
-    color: rgba(255, 255, 255, 0.6);
+.icon-action-btn.back-btn {
+    color: rgb(171, 171, 171);
     transition: 0.2s;
 }
 
-.back-btn:hover {
+.icon-action-btn.back-btn:hover {
     color: var(--accent);
 }
 
@@ -202,14 +202,14 @@
 
 .icon-action-btn {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     width: 50px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(171, 171, 171);
     cursor: pointer;
     transition: all 0.2s ease;
 }

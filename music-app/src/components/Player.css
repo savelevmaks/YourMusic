@@ -125,7 +125,7 @@ position: fixed;
 .player-section.right { justify-content: flex-end; gap: 15px; }
 
 .player-action-btn {
-    color: rgba(255,255,255,0.5);
+    color: rgba(171, 171, 171);
     background: none;
     border: none;
     cursor: pointer;

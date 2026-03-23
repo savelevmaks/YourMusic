@@ -37,3 +37,20 @@ button {
   font-family: inherit;
   color: inherit;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html, body {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: var(--bg-main);
+}
+
+* {
+    box-sizing: border-box;
+}

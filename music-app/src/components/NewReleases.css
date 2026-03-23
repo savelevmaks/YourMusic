@@ -51,7 +51,7 @@
 .embla {
     overflow: hidden; 
     /* Растягиваем на всю ширину экрана, чтобы центр был абсолютным */
-    width: 100vw; 
+    width: 99vw; 
     position: relative;
     /* Сдвигаем влево, чтобы компенсировать padding основного <main> */
     left: 50%;

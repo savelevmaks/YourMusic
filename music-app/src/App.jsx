@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// Импортируем useNavigate, чтобы перекидывать пользователя при выходе
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Auth from './pages/Auth';
